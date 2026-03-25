@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tutoring Payments</title>
+  <title>Tutoring Payments Success</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
     .locked {
@@ -37,7 +37,7 @@
       <a href="student-successs-stories.html">Success stories</a>
       <a href="parent-faq.html">FAQ</a>
     </nav>
-    <h2>Secure Tutoring Payment and Scheduling</h2>
+    <h2>Payment Successful</h2>
   </header>
 
   <div class="paycontainer">
@@ -47,14 +47,21 @@
       <input type="hidden" name="currency_code" value="USD" />
 
   <!-- When you publish a site using GitHub Pages, they automatically assign you a default domain:
-        GitHub gives you a free, working domain (.github.io)
   User/organization site:
          https://<your-username>.github.io
    Project site:
          https://<your-username>.github.io/<repo-name>/
+         
+   https://github.com/mathtutortomquinn-glitch/MathTutor.github.io
+
+https://github.com/mathtutortomquinn-glitch/MathTutor.github.io/websitefiles  
+   
+ <input type="hidden" name="return" value="https://yourdomain.com/payment-success.html" />
+ <input type="hidden" name="cancel_return" value="https://yourdomain.com/payment-cancelled.html" />
+ 
    -->
-      <input type="hidden" name="return" value="https://mathtutortomquinn-glitch/github.io/MathTutor/payment-success.html" />
-      <input type="hidden" name="cancel_return" value="https://mathtutortomquinn-glitch/github.io/MathTutor/payment-cancelled.html" />
+      <input type="hidden" name="return" value="https://github.com/mathtutortomquinn-glitch/MathTutor.github.io/websitefiles/payment-success.html" />
+      <input type="hidden" name="cancel_return" value="https://github.com/mathtutortomquinn-glitch/MathTutor.github.io/websitefiles/payment-cancelled.html" />
 
       <h2>Choose a tutoring package:</h2>
 
@@ -72,16 +79,20 @@
   </div>
 
   <div id="bookingNotice" class="notice">
-    Please purchase a tutoring package, then the scheduling calendar will be presented.
+    Payment was Successful 
   </div>
 
   <section id="bookingSection" class="locked hidden" style="max-width:900px;margin:auto;">
-    <h2>Book a Session</h2>
-    <div
-      class="calendly-inline-widget"
-      data-url="https://calendly.com/mathtutor-tomquinn/30min"
-      style="min-width:320px;height:750px;">
-    </div>
+  
+<p><strong>Book a Session</strong>
+<div class="calendly-inline-widget"
+     data-url="https://calendly.com/mathtutor-tomquinn/30min"
+     style="min-width:320px;height:700px;">
+</div>
+
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</p>
+
   </section>
 
   <script>

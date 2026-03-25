@@ -35,29 +35,164 @@ header *{
   position: relative;
   z-index: 1;
 }
+ 
+/*
+  Item name display (.item_name)
+  Subtle bevel for a slightly raised panel look (not a button)
+*/
 
 .item_name {
-  font-family: "Georgia", serif;
-  font-size: 25px;
-  font-weight:bold;
-  text-align:center;
-  color:blue;
+  /* Light neutral background */
+ /* Background gradient for lighting effect */
+  background: linear-gradient(#6cc070, #4CAF50);
+
+  /* Text styling */
+  color: white;
+  padding: 12px 18px;
+  font-weight: bold;
+  text-align: center;
+
+  /* Border helps define the edge */
+  border: 1px solid #3e8e41;
+  border-radius: 6px;
+
+  /*
+    Bevel effect:
+    - light inset (top-left) simulates highlight
+    - dark inset (bottom-right) simulates depth
+    - outer shadow lifts button off page
+  */
+ 
+  box-shadow:
+    inset 2px 2px 3px rgba(255,255,255,0.6),
+    inset -2px -2px 3px rgba(0,0,0,0.4),
+    0 3px 4px rgba(0,0,0,0.25);
+
+  /* Make it feel interactive */
+  cursor: pointer;
 }
+
+ 
+
+/*
+  Beveled button-style input
+  Uses gradient + inset shadows to simulate depth
+*/
 
 .pay_text_box {
-  font-family: "Georgia", serif;
-  font-size: 25px;
-  font-weight:bold;
-  text-align:center;
-  color:blue;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background: linear-gradient(#6cc070, #4CAF50);
+  color: white;
+  padding: 12px 18px;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+
+  border: 1px solid #3e8e41;
+  border-radius: 6px;
+
+  box-shadow:
+    inset 2px 2px 3px rgba(255,255,255,0.6),
+    inset -2px -2px 3px rgba(0,0,0,0.4),
+    0 3px 4px rgba(0,0,0,0.25);
+
+  width: 220px;
+  height: 45px;
+  box-sizing: border-box;
+
+  display: inline-block;
 }
+/*
+  Uncomment below if you want a "pressed" effect
+*/
+ 
+.pay_text_box:active {
+  box-shadow:
+    inset -2px -2px 3px rgba(255,255,255,0.5),
+    inset 2px 2px 3px rgba(0,0,0,0.5);
+}
+ 
+ 
+
+/*
+  Beveled button (.payBtn)
+  Designed to look clickable with a raised surface
+*/
 
 .payBtn {
-  font-family: "Georgia", serif;
+  background: linear-gradient(#6cc070, #4CAF50);
+  color: white;
+  padding: 12px 18px;
+  font-weight: bold;
+  text-align: center;
+  width: 150px;
+  height: 45px;
+  box-sizing: border-box;
+  border: 1px solid #3e8e41;
+  border-radius: 6px;
+  box-shadow:
+    inset 2px 2px 3px rgba(255,255,255,0.6),
+    inset -2px -2px 3px rgba(0,0,0,0.4),
+    0 3px 4px rgba(0,0,0,0.25);
+  cursor: pointer;
+}
+
+.payBtn:hover {
+  background: black;
+  color: white;
+}
+
+.payBtn:active {
+  box-shadow:
+    inset -2px -2px 3px rgba(255,255,255,0.5),
+    inset 2px 2px 3px rgba(0,0,0,0.5),
+    0 1px 2px rgba(0,0,0,0.25);
+  transform: translateY(1px);
+}
+
+.payBtn:disabled {
+  background: gray;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.notice {
+
+  /* Text styling */
+  color: black;
+  padding: 12px 18px;
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center;
+
+  /* Border helps define the edge */
+  border: 1px solid #3e8e41;
+  border-radius: 6px;
+}  
+  
+
+header nav a {
+  font-family: "Trebuchet MS", sans-serif;
   font-size: 25px;
-  font-weight:bold;
-  text-align:center;
-  color:blue;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+
+  /* spacing inside each link */
+  padding: 10px 18px;
+
+  /* border */
+  border: 2px solid white;
+  border-radius: 6px;
+
+  /* spacing between lines of text (if link wraps) */
+  line-height: 3;
+
+  /* prevents awkward line breaks */
+  white-space: nowrap;
+
 }
 
 nav a{
@@ -77,7 +212,8 @@ color:white;
 
 .paycontainer{
   font-family: "Georgia", serif;
-  font-size: 25px;
+  margin-top: 40px;
+  font-size: 70px;
   font-weight:bold;
   text-align:center;
   color:white;
@@ -85,6 +221,7 @@ color:white;
 
 
 .hero{
+margin-top:0px;
 text-align:center;
 padding:60px 20px;
 background:#115e59;
@@ -93,17 +230,24 @@ background:#115e59;
 .cta-button{
 display:inline-block;
 margin-top:20px;
-padding:12px 25px;
+padding:20px 25px;
 background:white;
 color:#0f766e;
+font-size: 20px;
 font-weight:bold;
 text-decoration:none;
 border-radius:6px;
+cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: black;
+  color:white;
 }
 
 .steps{
 text-align:center;
-margin-top:60px;
+margin-top:30px;
 }
 
 .step-grid{
@@ -137,16 +281,30 @@ padding:25px;
 border-radius:8px;
 }
 
-
 footer{
 background:#134e4a;
 text-align:center;
 padding:20px;
-margin-top:40px;
+margin-top:10px;
 }
 
 h1,h2,h3{
+margin-top:0px;
 letter-spacing:.5px;
+white-space: wrap;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom:0px;
+}
+
+h3 {
+  font-size: 22px;
 }
 
 p{
