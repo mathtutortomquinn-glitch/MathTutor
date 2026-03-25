@@ -41,34 +41,29 @@
   </header>
 
   <div class="paycontainer">
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-      <input type="hidden" name="cmd" value="_xclick" />
-      <input type="hidden" name="business" value="mathtutor-tomquinn@gmail.com" />
-      <input type="hidden" name="currency_code" value="USD" />
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+  <input type="hidden" name="cmd" value="_xclick" />
+  <input type="hidden" name="business" value="mathtutor-tomquinn@gmail.com" />
+  <input type="hidden" name="item_name" id="item_name_hidden" value="1 Half Hour TEST Session" />
+  <input type="hidden" name="item_number" value="TUTOR001" />
+  <input type="hidden" name="amount" id="paypalAmount" value="1.00" />
+  <input type="hidden" name="currency_code" value="USD" />
+  <input type="hidden" name="no_note" value="1" />
+  <input type="hidden" name="bn" value="PP-BuyNowBF" />
 
-  <!-- When you publish a site using GitHub Pages, they automatically assign you a default domain:
-        GitHub gives you a free, working domain (.github.io)
-  User/organization site:
-         https://<your-username>.github.io
-   Project site:
-         https://<your-username>.github.io/<repo-name>/
-   -->
-      <input type="hidden" name="return" value="https://mathtutortomquinn.github.io/MathTutor/payment-success.html" />
-      <input type="hidden" name="cancel_return" value="https://mathtutortomquinn.github.io/MathTutor/payment-cancelled.html" />
+  <input type="hidden" name="return" value="https://mathtutortomquinn.github.io/MathTutor/payment-success.html" />
+  <input type="hidden" name="cancel_return" value="https://mathtutortomquinn.github.io/MathTutor/payment-cancelled.html" />
 
-      <h2>Choose a tutoring package:</h2>
+  <select id="item_select">
+    <option value="1 Half Hour TEST Session" data-price="1.00">1 Half Hour TEST Session — $1.00</option>
+    <option value="2 Half Hour Sessions" data-price="75.00">2 Half Hour Sessions — $75.00</option>
+    <option value="10 Half Hour Sessions" data-price="350.00">10 Half Hour Sessions — $350.00</option>
+    <option value="20 Half Hour Sessions" data-price="650.00">20 Half Hour Sessions — $650.00</option>
+  </select>
 
-      <select class="item_name" id="item_name" name="item_name">
-        <option value="1 Half Hour TEST Session" data-price="1.00">1 Half Hour TEST Session — $1.00</option>
-        <option value="2 Half Hour Sessions" data-price="75.00">2 Half Hour Sessions — $75.00</option>
-        <option value="10 Half Hour Sessions" data-price="350.00">10 Half Hour Sessions — $350.00</option>
-        <option value="20 Half Hour Sessions" data-price="650.00">20 Half Hour Sessions — $650.00</option>
-      </select>
-
-      <input type="hidden" name="amount" id="paypalAmount" value="1.00" />
-      <input class="pay_text_box" type="text" id="displayAmount" value="$1.00" readonly />
-      <button class="payBtn" id="payBtn" type="submit">Pay $1.00</button>
-    </form>
+  <input type="text" id="displayAmount" value="$1.00" readonly />
+  <button type="submit" id="payBtn">Pay $1.00</button>
+</form>
   </div>
 
   <div id="bookingNotice" class="notice">
@@ -85,24 +80,25 @@
   </section>
 
   <script>
-    const select = document.querySelector('.item_name');
-    const paypalAmount = document.getElementById('paypalAmount');
-    const displayAmount = document.getElementById('displayAmount');
-    const payBtn = document.getElementById('payBtn');
+const select = document.getElementById('item_select');
+const paypalAmount = document.getElementById('paypalAmount');
+const displayAmount = document.getElementById('displayAmount');
+const payBtn = document.getElementById('payBtn');
+const itemNameHidden = document.getElementById('item_name_hidden');
 
-    function updatePayment() {
-      const selectedOption = select.options[select.selectedIndex];
-      const price = selectedOption.dataset.price;
+function updatePayment() {
+  const selectedOption = select.options[select.selectedIndex];
+  const price = selectedOption.dataset.price;
+  const name = selectedOption.value;
 
-      paypalAmount.value = price;
-      displayAmount.value = `$${price}`;
-      payBtn.textContent = `Pay $${price}`;
-      payBtn.disabled = false;
-    }
+  paypalAmount.value = price;
+  itemNameHidden.value = name;
+  displayAmount.value = `$${price}`;
+  payBtn.textContent = `Pay $${price}`;
+}
 
-    updatePayment();
-
-    select.addEventListener('change', updatePayment);
+updatePayment();
+select.addEventListener('change', updatePayment);
 
     document.querySelector('form').addEventListener('submit', function () {
       payBtn.textContent = 'Processing...';
