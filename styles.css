@@ -72,8 +72,6 @@ header *{
   cursor: pointer;
 }
 
- 
-
 /*
   Beveled button-style input
   Uses gradient + inset shadows to simulate depth
@@ -114,8 +112,6 @@ header *{
     inset -2px -2px 3px rgba(255,255,255,0.5),
     inset 2px 2px 3px rgba(0,0,0,0.5);
 }
- 
- 
 
 /*
   Beveled button (.payBtn)

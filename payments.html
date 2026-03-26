@@ -5,23 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tutoring Payments</title>
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    .locked {
-      opacity: 0.5;
-      pointer-events: none;
-    }
-    .hidden {
-      display: none;
-    }
-    .notice {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 15px;
-      background: #f4f4f4;
-      border-left: 4px solid #555;
-      font-size: 1rem;
-    }
-  </style>
+ <style>
+  .locked {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .notice {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 16px 18px;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+
+  .notice-neutral {
+    background: #f4f4f4;
+    border-left: 4px solid #555;
+    color: #222;
+  }
+
+  .notice-success {
+    background: #eef8ee;
+    border-left: 4px solid #2e7d32;
+    color: #1f4d22;
+  }
+
+  .notice-warning {
+    background: #fff8e8;
+    border-left: 4px solid #b7791f;
+    color: #6b4e16;
+  }
+</style>
 </head>
 <body>
   <header>
@@ -34,41 +55,63 @@
       <a href="services.html">Courses</a>
       <a href="contact.html">Contact</a>
       <a href="payments.html">Payments and Scheduling</a>
-      <a href="student-successs-stories.html">Success stories</a>
+      <a href="student-successs-stories.html"> Success stories </a>
       <a href="parent-faq.html">FAQ</a>
     </nav>
     <h2>Secure Tutoring Payment and Scheduling</h2>
   </header>
 
   <div class="paycontainer">
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-  <input type="hidden" name="cmd" value="_xclick" />
-  <input type="hidden" name="business" value="mathtutor-tomquinn@gmail.com" />
-  <input type="hidden" name="item_name" id="item_name_hidden" value="1 Half Hour TEST Session" />
-  <input type="hidden" name="item_number" value="TUTOR001" />
-  <input type="hidden" name="amount" id="paypalAmount" value="1.00" />
-  <input type="hidden" name="currency_code" value="USD" />
-  <input type="hidden" name="no_note" value="1" />
-  <input type="hidden" name="bn" value="PP-BuyNowBF" />
+    <form id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_xclick" />
+      <input type="hidden" name="business" value="mathtutor.tomquinn@gmail.com" />
+      <input type="hidden" name="item_name" id="item_name_hidden" value="1 Half Hour TEST Session" />
+      <input type="hidden" name="item_number" value="TUTOR001" />
+      <input type="hidden" name="amount" id="paypalAmount" value="1.00" />
+      <input type="hidden" name="currency_code" value="USD" />
+      <input type="hidden" name="no_note" value="1" />
+      <input type="hidden" name="bn" value="PP-BuyNowBF" />
+      <input
+        type="hidden"
+        name="return"
+        id="returnUrl"
+        value="https://mathtutortomquinn.github.io/MathTutor/payment-success.html"
+      />
+      <input
+        type="hidden"
+        name="cancel_return"
+        value="https://mathtutortomquinn.github.io/MathTutor/payment-cancelled.html"
+      />
 
-  <input type="hidden" name="return" value="https://mathtutortomquinn.github.io/MathTutor/payment-success.html" />
-  <input type="hidden" name="cancel_return" value="https://mathtutortomquinn.github.io/MathTutor/payment-cancelled.html" />
+      <select class="item_name" id="item_select">
+        <option value="1 Half Hour TEST Session" data-price="1.00" data-sessions="1">
+          1 Half Hour TEST Session — $1.00
+        </option>
+        <option value="2 Half Hour Sessions" data-price="75.00" data-sessions="2">
+          2 Half Hour Sessions — $75.00
+        </option>
+        <option value="10 Half Hour Sessions" data-price="350.00" data-sessions="10">
+          10 Half Hour Sessions — $350.00
+        </option>
+        <option value="20 Half Hour Sessions" data-price="650.00" data-sessions="20">
+          20 Half Hour Sessions — $650.00
+        </option>
+      </select>
 
-  <select id="item_select">
-    <option value="1 Half Hour TEST Session" data-price="1.00">1 Half Hour TEST Session — $1.00</option>
-    <option value="2 Half Hour Sessions" data-price="75.00">2 Half Hour Sessions — $75.00</option>
-    <option value="10 Half Hour Sessions" data-price="350.00">10 Half Hour Sessions — $350.00</option>
-    <option value="20 Half Hour Sessions" data-price="650.00">20 Half Hour Sessions — $650.00</option>
-  </select>
-
-  <input type="text" id="displayAmount" value="$1.00" readonly />
-  <button type="submit" id="payBtn">Pay $1.00</button>
-</form>
+      <input class="pay_text_box" type="text" id="displayAmount" value="$1.00" readonly />
+      <button class="payBtn" type="submit" id="payBtn">Pay $1.00</button>
+    </form>
+  </div>
+  
+  <div id="paymentSuccessBanner" class="notice notice-success hidden"></div>
+  <div id="bookingNotice" class="notice notice-neutral">
+  Please purchase a tutoring package to unlock scheduling for your available sessions.
   </div>
 
-  <div id="bookingNotice" class="notice">
-    Please purchase a tutoring package, then the scheduling calendar will be presented.
-  </div>
+  <div id="sessionsNotice" class="notice notice-success hidden"></div>
+
+
+  <div id="sessionsNotice" class="notice hidden"></div>
 
   <section id="bookingSection" class="locked hidden" style="max-width:900px;margin:auto;">
     <h2>Book a Session</h2>
@@ -79,31 +122,161 @@
     </div>
   </section>
 
-  <script>
-const select = document.getElementById('item_select');
-const paypalAmount = document.getElementById('paypalAmount');
-const displayAmount = document.getElementById('displayAmount');
-const payBtn = document.getElementById('payBtn');
-const itemNameHidden = document.getElementById('item_name_hidden');
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
-function updatePayment() {
-  const selectedOption = select.options[select.selectedIndex];
-  const price = selectedOption.dataset.price;
-  const name = selectedOption.value;
+ <script>
+  const form = document.getElementById('paypalForm');
+  const select = document.getElementById('item_select');
+  const paypalAmount = document.getElementById('paypalAmount');
+  const displayAmount = document.getElementById('displayAmount');
+  const payBtn = document.getElementById('payBtn');
+  const itemNameHidden = document.getElementById('item_name_hidden');
+  const returnUrl = document.getElementById('returnUrl');
 
-  paypalAmount.value = price;
-  itemNameHidden.value = name;
-  displayAmount.value = `$${price}`;
-  payBtn.textContent = `Pay $${price}`;
-}
+  const bookingSection = document.getElementById('bookingSection');
+  const bookingNotice = document.getElementById('bookingNotice');
+  const sessionsNotice = document.getElementById('sessionsNotice');
+  const successBanner = document.getElementById('paymentSuccessBanner');
 
-updatePayment();
-select.addEventListener('change', updatePayment);
+  // ---------------------------
+  // PAYMENT UI
+  // ---------------------------
+  function getSelectedOption() {
+    return select.options[select.selectedIndex];
+  }
 
-    document.querySelector('form').addEventListener('submit', function () {
-      payBtn.textContent = 'Processing...';
-      payBtn.disabled = true;
-    });
-  </script>
+  function updatePayment() {
+    const selectedOption = getSelectedOption();
+    const price = parseFloat(selectedOption.dataset.price).toFixed(2);
+    const name = selectedOption.value;
+    const sessions = parseInt(selectedOption.dataset.sessions, 10);
+
+    paypalAmount.value = price;
+    itemNameHidden.value = name;
+    displayAmount.value = `$${price}`;
+    payBtn.textContent = `Pay $${price}`;
+
+    const successUrl = new URL('https://mathtutortomquinn.github.io/MathTutor/payment-success.html');
+    successUrl.searchParams.set('package', name);
+    successUrl.searchParams.set('sessions', sessions);
+    successUrl.searchParams.set('amount', price);
+
+    returnUrl.value = successUrl.toString();
+  }
+
+  // ---------------------------
+  // SESSION STORAGE
+  // ---------------------------
+  function getSessionsRemaining() {
+    return parseInt(localStorage.getItem('sessionsRemaining') || '0', 10);
+  }
+
+  function setSessionsRemaining(count) {
+    localStorage.setItem('sessionsRemaining', String(count));
+  }
+
+  function clearSessionsRemaining() {
+    localStorage.removeItem('sessionsRemaining');
+  }
+
+  // ---------------------------
+  // UI VISIBILITY
+  // ---------------------------
+  function updateBookingVisibility() {
+    const sessionsRemaining = getSessionsRemaining();
+
+    if (sessionsRemaining > 0) {
+      bookingSection.classList.remove('locked', 'hidden');
+      bookingNotice.classList.add('hidden');
+
+      sessionsNotice.textContent =
+        `Sessions remaining: ${sessionsRemaining}. You may continue scheduling.`;
+      sessionsNotice.classList.remove('hidden');
+    } else {
+      bookingSection.classList.add('locked', 'hidden');
+      bookingNotice.classList.remove('hidden');
+      sessionsNotice.classList.add('hidden');
+      sessionsNotice.textContent = '';
+    }
+  }
+
+  function decrementSessionCount() {
+    const current = getSessionsRemaining();
+
+    if (current > 1) {
+      setSessionsRemaining(current - 1);
+    } else {
+      clearSessionsRemaining();
+    }
+
+    updateBookingVisibility();
+  }
+
+  // ---------------------------
+  // SUCCESS BANNER
+  // ---------------------------
+  function showPaymentSuccessBanner() {
+    const params = new URLSearchParams(window.location.search);
+    const fromPayment = params.get('paid');
+
+    if (fromPayment === 'true') {
+      const sessions = getSessionsRemaining();
+      const packageName = localStorage.getItem('lastPackageName') || '';
+
+      successBanner.textContent =
+        `Payment successful. You now have ${sessions} session${sessions === 1 ? '' : 's'} available to schedule.`;
+
+      successBanner.classList.remove('hidden');
+
+      // Clean URL so it doesn't repeat on refresh
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }
+
+  // ---------------------------
+  // INITIAL LOAD
+  // ---------------------------
+  updatePayment();
+  updateBookingVisibility();
+  showPaymentSuccessBanner();
+
+  // ---------------------------
+  // EVENTS
+  // ---------------------------
+  select.addEventListener('change', updatePayment);
+
+  form.addEventListener('submit', function () {
+    payBtn.textContent = 'Processing...';
+    payBtn.disabled = true;
+  });
+
+  window.addEventListener('pageshow', function (event) {
+    if (event.persisted) {
+      payBtn.disabled = false;
+      updatePayment();
+      updateBookingVisibility();
+      showPaymentSuccessBanner();
+    }
+  });
+
+  // ---------------------------
+  // CALENDLY EVENT LISTENER
+  // ---------------------------
+  window.addEventListener('message', function (e) {
+    if (e.origin !== 'https://calendly.com') return;
+
+    if (e.data.event === 'calendly.event_scheduled') {
+      decrementSessionCount();
+
+      const remaining = getSessionsRemaining();
+
+      if (remaining > 0) {
+        alert(`Session booked. ${remaining} remaining.`);
+      } else {
+        alert('Session booked. All sessions used.');
+      }
+    }
+  });
+</script>
 </body>
 </html>
