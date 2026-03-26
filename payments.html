@@ -82,7 +82,7 @@
         name="cancel_return"
         value="https://mathtutortomquinn.github.io/MathTutor/payment-cancelled.html"
       />
-
+      <label for="item_select">Choose a tutoring package</label>
       <select class="item_name" id="item_select">
         <option value="1 Half Hour TEST Session" data-price="1.00" data-sessions="1">
           1 Half Hour TEST Session — $1.00
@@ -97,7 +97,7 @@
           20 Half Hour Sessions — $650.00
         </option>
       </select>
-
+      <label for="displayAmount">Selected payment amount</label>
       <input class="pay_text_box" type="text" id="displayAmount" value="$1.00" readonly />
       <button class="payBtn" type="submit" id="payBtn">Pay $1.00</button>
     </form>
@@ -108,9 +108,7 @@
   Please purchase a tutoring package to unlock scheduling for your available sessions.
   </div>
 
-  <div id="sessionsNotice" class="notice notice-success hidden"></div>
-
-
+  <div id="sessionsNoticehidden" class="notice notice-success hidden"></div>
   <div id="sessionsNotice" class="notice hidden"></div>
 
   <section id="bookingSection" class="locked hidden" style="max-width:900px;margin:auto;">
