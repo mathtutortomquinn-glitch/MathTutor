@@ -47,13 +47,13 @@ header *{
       font-weight: normal;
       } 
       
-displayAmount_L label {
+.displayAmount_L label {
       color: white;
       font-size: 12px;
       font-weight: normal;
       } 
       
-payBtn_L label {
+.payBtn_L label {
       color: white;
       font-size: 12px;
       font-weight: normal;
