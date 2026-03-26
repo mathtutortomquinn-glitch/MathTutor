@@ -41,7 +41,7 @@ header *{
   Subtle bevel for a slightly raised panel look (not a button)
 */
 
-item_select_L label {
+.item_select_L label {
       color: white;
       font-size: 12px;
       font-weight: normal;
