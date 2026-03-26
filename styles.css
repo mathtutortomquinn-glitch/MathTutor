@@ -41,6 +41,12 @@ header *{
   Subtle bevel for a slightly raised panel look (not a button)
 */
 
+label[for="item_select"] {
+      color: #1a73e8;
+      font-size: 18px;
+      font-weight: bold;
+      } 
+      
 .item_name {
   /* Light neutral background */
  /* Background gradient for lighting effect */
