@@ -42,20 +42,20 @@ header *{
 */
 
 .item_select_C {
-  color: red;
-  font-size: 12px;
+  color: white;
+      font-size: 18px;
   font-weight: normal;
 }
       
-displayAmount_C {
-      color: red;
-      font-size: 12px;
+.displayAmount_C {
+      color: white;
+      font-size: 18px;
       font-weight: normal;
       } 
       
-payBtn_C {
-      color: red;
-      font-size: 12px;
+.payBtn_C {
+     color: white;
+      font-size: 18px;
       font-weight: normal;
       }     
       
