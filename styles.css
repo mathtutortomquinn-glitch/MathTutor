@@ -41,13 +41,13 @@ header *{
   Subtle bevel for a slightly raised panel look (not a button)
 */
 
-.item_select_C {
+.item_select {
   color: white;
       font-size: 18px;
   font-weight: normal;
 }
       
-.displayAmount_C {
+.displayAmount {
       color: white;
       font-size: 18px;
       font-weight: normal;

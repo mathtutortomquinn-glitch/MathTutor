@@ -62,6 +62,7 @@
   </header>
 
   <div class="paycontainer">
+ <!-- FOR TEST SANDBOX    action="https://www.sandbox.paypal.com/cgi-bin/webscr" -->
     <form id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post">
       <input type="hidden" name="cmd" value="_xclick" />
       <input type="hidden" name="business" value="mathtutor.tomquinn@gmail.com" />
@@ -83,7 +84,7 @@
         value="https://mathtutortomquinn.github.io/MathTutor/payment-cancelled.html"
       />
       
-      <label class="item_select_C" for="item_select_L">Please Choose a tutoring package :</label>
+      <label class="item_select" for="item_select_L">Please Choose a tutoring package :</label>
       <select class="item_name" id="item_select">
         <option value="1 Half Hour TEST Session" data-price="1.00" data-sessions="1">
           1 Half Hour TEST Session — $1.00
@@ -98,10 +99,10 @@
           20 Half Hour Sessions — $650.00
         </option>
       </select>
-      <label class="displayAmount_C" for="displayAmount_L">Purchase Total amount :</label>
+      <label class="displayAmount" for="displayAmount_L">Purchase Total amount :</label>
       <input class="pay_text_box" type="text" id="displayAmount" value="$1.00" readonly />
       <br>
-      <label class="payBtn_C" for="payBtn_L">Submit :</label>
+      <label class="payBtn" for="payBtn_L">Submit :</label>
       <button class="payBtn" type="submit" id="payBtn">Pay $1.00</button>
     </form>
   </div>
