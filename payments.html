@@ -132,203 +132,169 @@
   </section>
 
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+  const form = document.getElementById('paypalForm');
+  const select = document.getElementById('item_select');
+  const paypalAmount = document.getElementById('paypalAmount');
+  const displayAmount = document.getElementById('displayAmount');
+  const payBtn = document.getElementById('payBtn');
+  const itemNameHidden = document.getElementById('item_name_hidden');
+  const returnUrl = document.getElementById('returnUrl');
 
-  <script>
-    const form = document.getElementById('paypalForm');
-    const select = document.getElementById('item_select');
-    const paypalAmount = document.getElementById('paypalAmount');
-    const displayAmount = document.getElementById('displayAmount');
-    const payBtn = document.getElementById('payBtn');
-    const itemNameHidden = document.getElementById('item_name_hidden');
-    const returnUrl = document.getElementById('returnUrl');
+  const bookingSection = document.getElementById('bookingSection');
+  const bookingNotice = document.getElementById('bookingNotice');
+  const sessionsNotice = document.getElementById('sessionsNotice');
+  const successBanner = document.getElementById('paymentSuccessBanner');
 
-    const bookingSection = document.getElementById('bookingSection');
-    const bookingNotice = document.getElementById('bookingNotice');
-    const sessionsNotice = document.getElementById('sessionsNotice');
-    const successBanner = document.getElementById('paymentSuccessBanner');
+  const SITE_BASE = 'https://mathtutortomquinn-glitch.github.io/MathTutor';
+  const PAYMENTS_PAGE = `${SITE_BASE}/payments.html`;
 
-    const SITE_BASE = 'https://mathtutortomquinn-glitch.github.io/MathTutor';
-    const PAYMENTS_PAGE = `${SITE_BASE}/payments.html`;
-    const CANCEL_PAGE = `${SITE_BASE}/payment-cancelled.html`;
-
-    // ---------------------------
-    // PAYMENT UI
-    // ---------------------------
-    function getSelectedOption() {
-      return select.options[select.selectedIndex];
-    }
-
-    function updatePayment() {
-      const selectedOption = getSelectedOption();
-      const price = parseFloat(selectedOption.dataset.price).toFixed(2);
-      const name = selectedOption.value;
-      const sessions = parseInt(selectedOption.dataset.sessions, 10);
-
-      paypalAmount.value = price;
-      itemNameHidden.value = name;
-      displayAmount.value = `$${price}`;
-      payBtn.textContent = `Pay $${price}`;
-
-      const successUrl = new URL('https://mathtutortomquinn-glitch.github.io/MathTutor/payments.html');
-      successUrl.searchParams.set('paid', 'true');
-      successUrl.searchParams.set('package', name);
-      successUrl.searchParams.set('sessions', String(sessions));
-      successUrl.searchParams.set('amount', price);
-      returnUrl.value = successUrl.toString();
-    }
-
-    // ---------------------------
-    // SESSION STORAGE
-    // ---------------------------
-    function getSessionsRemaining() {
-      return parseInt(localStorage.getItem('sessionsRemaining') || '0', 10);
-    }
-
-    function setSessionsRemaining(count) {
-      localStorage.setItem('sessionsRemaining', String(count));
-    }
-
-    function clearSessionsRemaining() {
-      localStorage.removeItem('sessionsRemaining');
-    }
-
-    // ---------------------------
-    // APPLY SUCCESS FROM URL
-    // ---------------------------
-function applySuccessfulPaymentFromUrl() {
-  const params = new URLSearchParams(window.location.search);
-  const paid = params.get('paid');
-  const packageName = params.get('package') || '';
-  const amount = params.get('amount') || '';
-  const sessionsPurchased = parseInt(params.get('sessions') || '0', 10);
-
-  if (paid !== 'true' || sessionsPurchased <= 0) {
-    return;
+  function getSelectedOption() {
+    return select.options[select.selectedIndex];
   }
 
-  const paymentSignature = `paid:${paid}|package:${packageName}|amount:${amount}|sessions:${sessionsPurchased}`;
-  const alreadyProcessed = sessionStorage.getItem('lastProcessedPaymentSignature');
+  function updatePayment() {
+    const selectedOption = getSelectedOption();
+    if (!selectedOption) return;
 
-  if (alreadyProcessed === paymentSignature) {
-    return;
+    const price = selectedOption.getAttribute('data-price');
+    const name = selectedOption.value;
+    const sessions = selectedOption.getAttribute('data-sessions');
+
+    paypalAmount.value = price;
+    itemNameHidden.value = name;
+    displayAmount.value = `$${price}`;
+    payBtn.textContent = `Pay $${price}`;
+
+    const successUrl = new URL(PAYMENTS_PAGE);
+    successUrl.searchParams.set('paid', 'true');
+    successUrl.searchParams.set('package', name);
+    successUrl.searchParams.set('sessions', sessions);
+    successUrl.searchParams.set('amount', price);
+
+    returnUrl.value = successUrl.toString();
   }
 
-  const currentSessions = getSessionsRemaining();
-  const newTotal = currentSessions + sessionsPurchased;
+  function getSessionsRemaining() {
+    return parseInt(localStorage.getItem('sessionsRemaining') || '0', 10);
+  }
 
-  setSessionsRemaining(newTotal);
-  localStorage.setItem('lastPackageName', packageName);
-  localStorage.setItem('lastAmountPaid', amount);
-  localStorage.setItem('lastSessionsPurchased', String(sessionsPurchased));
+  function setSessionsRemaining(count) {
+    localStorage.setItem('sessionsRemaining', String(count));
+  }
 
-  sessionStorage.setItem('lastProcessedPaymentSignature', paymentSignature);
-}
+  function clearSessionsRemaining() {
+    localStorage.removeItem('sessionsRemaining');
+  }
 
-      sessionStorage.setItem('lastProcessedPaymentSignature', paymentSignature);
+  function applySuccessfulPaymentFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const paid = params.get('paid');
+    const packageName = params.get('package') || '';
+    const amount = params.get('amount') || '';
+    const sessionsPurchased = parseInt(params.get('sessions') || '0', 10);
+
+    if (paid !== 'true' || sessionsPurchased <= 0) return;
+
+    const paymentSignature = `paid:${paid}|package:${packageName}|amount:${amount}|sessions:${sessionsPurchased}`;
+    const alreadyProcessed = sessionStorage.getItem('lastProcessedPaymentSignature');
+
+    if (alreadyProcessed === paymentSignature) return;
+
+    const currentSessions = getSessionsRemaining();
+    const newTotal = currentSessions + sessionsPurchased;
+
+    setSessionsRemaining(newTotal);
+    localStorage.setItem('lastPackageName', packageName);
+    localStorage.setItem('lastAmountPaid', amount);
+    localStorage.setItem('lastSessionsPurchased', String(sessionsPurchased));
+
+    sessionStorage.setItem('lastProcessedPaymentSignature', paymentSignature);
+  }
+
+  function updateBookingVisibility() {
+    const sessionsRemaining = getSessionsRemaining();
+
+    if (sessionsRemaining > 0) {
+      bookingSection.classList.remove('locked', 'hidden');
+      bookingNotice.classList.add('hidden');
+
+      sessionsNotice.textContent =
+        `Sessions remaining: ${sessionsRemaining}. You may continue scheduling.`;
+      sessionsNotice.classList.remove('hidden');
+    } else {
+      bookingSection.classList.add('locked', 'hidden');
+      bookingNotice.classList.remove('hidden');
+      sessionsNotice.classList.add('hidden');
+      sessionsNotice.textContent = '';
+    }
+  }
+
+  function decrementSessionCount() {
+    const current = getSessionsRemaining();
+
+    if (current > 1) {
+      setSessionsRemaining(current - 1);
+    } else {
+      clearSessionsRemaining();
     }
 
-    // ---------------------------
-    // UI VISIBILITY
-    // ---------------------------
-    function updateBookingVisibility() {
-      const sessionsRemaining = getSessionsRemaining();
-
-      if (sessionsRemaining > 0) {
-        bookingSection.classList.remove('locked', 'hidden');
-        bookingNotice.classList.add('hidden');
-
-        sessionsNotice.textContent =
-          `Sessions remaining: ${sessionsRemaining}. You may continue scheduling.`;
-        sessionsNotice.classList.remove('hidden');
-      } else {
-        bookingSection.classList.add('locked', 'hidden');
-        bookingNotice.classList.remove('hidden');
-        sessionsNotice.classList.add('hidden');
-        sessionsNotice.textContent = '';
-      }
-    }
-
-    function decrementSessionCount() {
-      const current = getSessionsRemaining();
-
-      if (current > 1) {
-        setSessionsRemaining(current - 1);
-      } else {
-        clearSessionsRemaining();
-      }
-
-      updateBookingVisibility();
-    }
-
-    // ---------------------------
-    // SUCCESS BANNER
-    // ---------------------------
-    function showPaymentSuccessBanner() {
-      const params = new URLSearchParams(window.location.search);
-      const fromPayment = params.get('paid');
-      const packageName = params.get('package') || '';
-      const sessionsPurchased = parseInt(params.get('sessions') || '0', 10);
-      const totalSessions = getSessionsRemaining();
-
-      if (fromPayment === 'true') {
-        successBanner.textContent =
-          `Payment successful${packageName ? ` for ${packageName}` : ''}. ` +
-          `Added ${sessionsPurchased} session${sessionsPurchased === 1 ? '' : 's'}. ` +
-          `You now have ${totalSessions} session${totalSessions === 1 ? '' : 's'} available to schedule.`;
-
-        successBanner.classList.remove('hidden');
-
-        // Clean URL so refresh/back does not repeat payment processing
-        window.history.replaceState({}, document.title, window.location.pathname);
-      }
-    }
-
-    // ---------------------------
-    // INITIAL LOAD
-    // ---------------------------
-    returnUrl.value = PAYMENTS_PAGE;
-    applySuccessfulPaymentFromUrl();
-    updatePayment();
     updateBookingVisibility();
-    showPaymentSuccessBanner();
+  }
 
-    // ---------------------------
-    // EVENTS
-    // ---------------------------
-    select.addEventListener('change', updatePayment);
+  function showPaymentSuccessBanner() {
+    const params = new URLSearchParams(window.location.search);
+    const fromPayment = params.get('paid');
+    const packageName = params.get('package') || '';
+    const sessionsPurchased = parseInt(params.get('sessions') || '0', 10);
+    const totalSessions = getSessionsRemaining();
 
-    form.addEventListener('submit', function () {
-      payBtn.textContent = 'Processing...';
-      payBtn.disabled = true;
-    });
+    if (fromPayment === 'true') {
+      successBanner.textContent =
+        `Payment successful${packageName ? ` for ${packageName}` : ''}. Added ${sessionsPurchased} session${sessionsPurchased === 1 ? '' : 's'}. You now have ${totalSessions} session${totalSessions === 1 ? '' : 's'} available to schedule.`;
 
-    window.addEventListener('pageshow', function (event) {
-      if (event.persisted) {
-        payBtn.disabled = false;
-        updatePayment();
-        updateBookingVisibility();
-        showPaymentSuccessBanner();
+      successBanner.classList.remove('hidden');
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }
+
+  applySuccessfulPaymentFromUrl();
+  updatePayment();
+  updateBookingVisibility();
+  showPaymentSuccessBanner();
+
+  select.addEventListener('change', updatePayment);
+
+  form.addEventListener('submit', function () {
+    updatePayment();
+    payBtn.textContent = 'Processing...';
+    payBtn.disabled = true;
+  });
+
+  window.addEventListener('pageshow', function (event) {
+    if (event.persisted) {
+      payBtn.disabled = false;
+      updatePayment();
+      updateBookingVisibility();
+      showPaymentSuccessBanner();
+    }
+  });
+
+  window.addEventListener('message', function (e) {
+    if (e.origin !== 'https://calendly.com') return;
+
+    if (e.data.event === 'calendly.event_scheduled') {
+      decrementSessionCount();
+
+      const remaining = getSessionsRemaining();
+
+      if (remaining > 0) {
+        alert(`Session booked. ${remaining} remaining.`);
+      } else {
+        alert('Session booked. All sessions used.');
       }
-    });
-
-    // ---------------------------
-    // CALENDLY EVENT LISTENER
-    // ---------------------------
-    window.addEventListener('message', function (e) {
-      if (e.origin !== 'https://calendly.com') return;
-
-      if (e.data.event === 'calendly.event_scheduled') {
-        decrementSessionCount();
-
-        const remaining = getSessionsRemaining();
-
-        if (remaining > 0) {
-          alert(`Session booked. ${remaining} remaining.`);
-        } else {
-          alert('Session booked. All sessions used.');
-        }
-      }
-    });
-  </script>
+    }
+  });
+</script>
 </body>
 </html>
