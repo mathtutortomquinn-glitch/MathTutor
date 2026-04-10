@@ -196,6 +196,14 @@ header *{
   opacity: 0.7;
 }
 
+a.LinkedIn-link {
+  color: white;
+  text-decoration: none;
+}
+a.LinkedIn-link:hover {
+  text-decoration: underline;
+}
+
 .notice{
   max-width: 900px;
   margin: 20px auto;
@@ -411,5 +419,12 @@ a[href^="mailto"] {
   .step-grid,
   .step-gridA{
     grid-template-columns: 1fr;
+  }
+  a.LinkedIn-link {
+  color: white;
+  text-decoration: none;
+  }
+  a.LinkedIn-link:hover {
+  text-decoration: underline;
   }
 }
