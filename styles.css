@@ -1,431 +1,84 @@
-
-body{
-background-color:#0f766e;
-color:white;
-font-family:Arial, Helvetica, sans-serif;
-margin:0;
-padding:0;
-line-height:1.6;
-}
-
-header{
- min-height: 400px; /* 100% of viewport height */
-  padding: 20px;
-  text-align:center;
-
- /* background-image: url("images/math-chalkboard.png"); */
-  background-image: url("images/Mathematics tutor promotion with call-to-action.png");
-  background-color: #17312d;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  color: red;
-  position: relative;
-}
-
-header::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background: rgba(0,0,0,0.1);
-}
-
-header *{
-  position: relative;
-  z-index: 1;
-}
- 
- 
- header nav{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
- 
-/*
-  Item name display (.item_name)
-  Subtle bevel for a slightly raised panel look (not a button)
-*/
-
-#paypalForm{
-  display: flex;
+ /* =========================
+   GLOBAL STYLES
+========================= */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  
+    display: flex;
+  min-height: 100vh;
   flex-direction: column;
-  align-items: center;
-  gap: 16px;
 }
 
-.item_select,
-.displayAmount,
-.payBtn_Q{
-  font-size: 24px;
-  font-weight: normal;
+main {
+  flex: 1;
 }
-      
-.displayAmount {
-      color: white;
-      font-size: 24px;
-      font-weight: normal;
-      text-align: left;
-      } 
-      
-.payBtn_Q {
-     color: white;
-      font-size: 24px;
-      font-weight: normal;
-      }     
-       
-.item_name {
-  /* Light neutral background */
- /* Background gradient for lighting effect */
-  line-height: 1.2;   /* prevents extra vertical expansion */
-  background: linear-gradient(#6cc070, #4CAF50);
 
-  /* Text styling */
+/* =========================
+   FOOTER CONTAINER
+========================= */
+footer {
+  background: #0f4f4a; /* matches your green theme */
   color: white;
-  padding: 8px 14px;
-  font-size: 18px;
-  font-weight: bold;
   text-align: center;
-
-  /* Border helps define the edge */
-  border: 1px solid #3e8e41;
-  border-radius: 6px;
-
-  /*
-    Bevel effect:
-    - light inset (top-left) simulates highlight
-    - dark inset (bottom-right) simulates depth
-    - outer shadow lifts button off page
-  */
- 
-  box-shadow:
-    inset 2px 2px 3px rgba(255,255,255,0.6),
-    inset -2px -2px 3px rgba(0,0,0,0.4),
-    0 3px 4px rgba(0,0,0,0.25);
-
-  /* Make it feel interactive */
-  cursor: pointer;
+  padding: 25px 15px;
 }
 
-/*
-  Beveled button-style input
-  Uses gradient + inset shadows to simulate depth
-*/
-
-.pay_text_box {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-
-  background: linear-gradient(#6cc070, #4CAF50);
-  color: white;
-  padding: 12px 18px;
-  font-weight: bold;
-  font-size: 18px;
-  text-align: center;
-
-  border: 1px solid #3e8e41;
-  border-radius: 6px;
-
-  box-shadow:
-    inset 2px 2px 3px rgba(255,255,255,0.6),
-    inset -2px -2px 3px rgba(0,0,0,0.4),
-    0 3px 4px rgba(0,0,0,0.25);
-
-  width: 220px;
-  height: 45px;
-  box-sizing: border-box;
-
-  display: inline-block;
-}
-/*
-  Uncomment below if you want a "pressed" effect
-*/
- 
-.pay_text_box:active {
-  box-shadow:
-    inset -2px -2px 3px rgba(255,255,255,0.5),
-    inset 2px 2px 3px rgba(0,0,0,0.5);
-}
-
-/*
-  Beveled button (.payBtn)
-  Designed to look clickable with a raised surface
-*/
-
-.payBtn {
-  background: linear-gradient(#6cc070, #4CAF50);
-  color: white;
-  padding: 12px 18px;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  width: 150px;
-  height: 45px;
-  box-sizing: border-box;
-  border: 1px solid #3e8e41;
-  border-radius: 6px;
-  box-shadow:
-    inset 2px 2px 3px rgba(255,255,255,0.6),
-    inset -2px -2px 3px rgba(0,0,0,0.4),
-    0 3px 4px rgba(0,0,0,0.25);
-  cursor: pointer;
-}
-
-.payBtn:hover {
-  background: linear-gradient(#4f9f53, #2f7d32);
-  color: white;
-}
-
-.payBtn:active {
-  box-shadow:
-    inset -2px -2px 3px rgba(255,255,255,0.5),
-    inset 2px 2px 3px rgba(0,0,0,0.5),
-    0 1px 2px rgba(0,0,0,0.25);
-  transform: translateY(1px);
-}
-
-.payBtn:disabled {
-  background: gray;
-  cursor: not-allowed;
-  opacity: 0.7;
-}
-
-a.LinkedIn-link {
-  color: white;
-  text-decoration: none;
-}
-a.LinkedIn-link:hover {
-  text-decoration: underline;
-}
-
-.notice{
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 16px 18px;
-  font-size: 1.2rem;
-  line-height: 1.5;
-  font-weight: bold;
-  text-align: center;
-  border: 1px solid #3e8e41;
-  border-radius: 6px;
-  background: #f4f4f4;
-  color: black;
-  box-sizing: border-box;
-}
-
-header nav a {
-  font-family: "Trebuchet MS", sans-serif;
-<!-- font-size: 25px;  -->
-  font-weight: 500;
-  letter-spacing: 0.5px;
-
-  /* spacing inside each link */
-<!--   padding: 10px 18px;     -->
-
-  /* border */
-  border: 2px solid white;
-  border-radius: 6px;
-
-  /* spacing between lines of text (if link wraps) */
-<!--   line-height: 3;    -->
-
-  /* prevents awkward line breaks */
-<!--   white-space: nowrap;    -->
-
-}
-
-nav a{
-color:white;
-margin:0 15px;
-text-decoration:none;
-font-weight:bold;
-}
-
-.container{
-width:90%;
-max-width:1000px;
-margin:auto;
-padding:20px;
-color:white;
-}
-
-.paycontainer{
-  width: 90%;
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
-  font-family: "Georgia", serif;
-  text-align: center;
-  color: white;
-  font-size: 1rem;
-  font-weight: normal;
-}
-
-.hero{
-margin-top:0px;
-text-align:center;
-padding:60px 20px;
-background:#115e59;
-}
-
-.cta-button {
-  display: inline-block;
-  margin-top: 20px;
-
-  background: linear-gradient(#6cc070, #4CAF50);
-  color: white;
-
-  padding: 12px 18px;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-
-  border: 1px solid #3e8e41;
-  border-radius: 6px;
-
-  box-shadow:
-    inset 2px 2px 3px rgba(255,255,255,0.6),
-    inset -2px -2px 3px rgba(0,0,0,0.4),
-    0 3px 4px rgba(0,0,0,0.25);
-
-  cursor: pointer;
-}
-
-.cta-button:hover {
-  background: linear-gradient(#4f9f53, #2f7d32);
-  color: white;
-}
-
-.steps{
-text-align:center;
-margin-top:30px;
-}
-
-.step-grid{
-display:grid;
-grid-template-columns:1fr 1fr 1fr;
-gap:30px;
-margin-top:25px;
-}
-
-.step{
-background:#134e4a;
-padding:25px;
-border-radius:8px;
-}
-
-.stepsA{
-text-align:left;
-margin-top:60px;
-}
-
-.step-gridA{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:30px;
-margin-top:25px;
-}
-
-.stepA{
-background:#134e4a;
-padding:25px;
-border-radius:8px;
-}
-
-footer{
-background:#134e4a;
-text-align:center;
-padding:20px;
-margin-top:10px;
-}
-
-h1,h2,h3{
-margin-top:0px;
-letter-spacing:.5px;
-white-space: normal;
-}
-
-h1 {
-  font-size: 40px;
-}
-
-h2 {
-  margin-top:0px;
-  font-size: 18px;
-  margin-bottom:0px;
-}
-
-h3 {
-  font-size: 12px;
-}
-
-p{
-font-size:1.05rem;
-}
-
-/* Global phone link styling (applies to iPhone) */
-.phone-link,
-a[href^="tel"] {
-  color: white !important;
-  text-decoration: none;
-}
-
-.email-link,
-a[href^="mailto"] {
-  color: white !important;
-  text-decoration: none;
-}
-
-
-/* Container */
+/* =========================
+   SOCIAL ICON BAR
+========================= */
 .social-bar {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   margin-top: 10px;
 }
 
-/* Shared icon style */
+/* Icon base */
 .social-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 36px;
-  height: 36px;
-  background: white;
-  border-radius: 6px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* Hover effect */
+.social-icon:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /* LinkedIn image */
 .social-icon img {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
 }
 
-/* Facebook icon (Font Awesome) */
+/* Facebook icon */
 .facebook-icon {
-  font-size: 20px;
+  font-size: 22px;
   color: #1877F2;
 }
 
-/* Hover effects */
-.social-icon:hover {
-  transform: translateY(-2px);
-  opacity: 0.85;
+/* =========================
+   TEXT ABOVE ICONS
+========================= */
+footer p {
+  margin: 6px 0;
+  font-size: 15px;
 }
 
-
-@media(max-width:600px){
+/* =========================
+   RESPONSIVE (MOBILE)
+========================= */
+@media (max-width: 600px) {
   .social-icon {
     width: 32px;
     height: 32px;
@@ -434,49 +87,5 @@ a[href^="mailto"] {
   .social-icon img,
   .facebook-icon {
     transform: scale(0.9);
-  }
-  
-  .cta-button {
-    display: block;
-    width: 100%;        /* full width */
-    font-size: 16px;    /* slightly smaller */
-    padding: 14px;      /* balanced tap target */
-  }
-  
-  .paycontainer{
-    width: 94%;
-    padding: 10px;
-  }
-
-  .item_select,
-  .displayAmount,
-  .payBtn_Q{
-    font-size: 18px;
-  }
-
-  .item_name,
-  .pay_text_box,
-  .payBtn{
-    width: 100%;
-    max-width: 320px;
-    padding: 8px 12px;
-    font-size: 16px;
-    margin-bottom: 6px;   /* adjust if currently larger or inherited */
-  }
-
-  .notice{
-    font-size: 1rem;
-  }
-
-  .step-grid,
-  .step-gridA{
-    grid-template-columns: 1fr;
-  }
-  a.LinkedIn-link {
-  color: white;
-  text-decoration: none;
-  }
-  a.LinkedIn-link:hover {
-  text-decoration: underline;
   }
 }
