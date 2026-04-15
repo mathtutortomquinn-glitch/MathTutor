@@ -18,8 +18,11 @@ section {
   text-align: center;
   padding: 70px 20px;
   background: #f7f7f7;
+ 
 }
-
+ .hero {
+  background: red;
+}
 .hero h1 {
   margin-bottom: 10px;
 }
