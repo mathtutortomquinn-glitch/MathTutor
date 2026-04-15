@@ -157,6 +157,12 @@ footer p {
   font-size: 15px;
 }
 
+.phone-link,
+.email-link {
+  color: white;
+  text-decoration: none;
+}
+
 /* =========================
    RESPONSIVE (MOBILE)
 ========================= */
