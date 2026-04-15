@@ -10,11 +10,17 @@
   background-color: #0f4f4a;
   background-position: center;
   background-repeat: no-repeat;
+  height: 120px; /* reduce this */
 }
 
 .site-header {
-  text-align: center;
-  background: #0f4f4a;
+  background-image: url("images/Mathematics tutor promotion with call-to-action.png");
+  background-size: contain;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: #0f4f4a;
+
+  height: 120px; /* reduce this */
 }
 
 .site-header img {
@@ -69,7 +75,7 @@ section {
 
 nav {
   text-align: center;
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 nav a {
