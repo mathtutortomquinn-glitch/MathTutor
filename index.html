@@ -73,10 +73,28 @@ Future testimonials can be added here
     
     <p>   
           
-<style>
-.facebook-icon, .linkedIn-icon img {
+ <style>
+.icon-row {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* THIS fixes the vertical alignment */
+  gap: 10px; /* space between icons */
+}
+
+.facebook-icon {
+  font-size: 20px;
+  color: #1877F2;
+  background: white;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.linkedIn-icon img {
   width: 24px;
   height: 24px;
+  background: white;
+  padding: 4px;
+  border-radius: 4px;
 }
 
 .facebook-icon:hover,
@@ -85,17 +103,15 @@ Future testimonials can be added here
 }
 </style>
 
-<a class="linkedIn-icon" href="https://www.linkedin.com/in/mathtutor-tomquinn" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
-       alt="LinkedIn"
-       style="color:#1877F2; width:24px; background:white; padding:4px; border-radius:4px;">
-</a>            
-    <!-- <a href="https://www.linkedin.com/in/mathtutor-tomquinn">LinkedIn</a> -->
-   
-<a href="https://www.facebook.com/tom.quinn.1029" target="_blank">
-  <i class="fab fa-facebook facebook-icon"
-     style="color:#1877F2; font-size:20px; background:white; padding:4px; border-radius:4px;"></i>
-</a>
+<div class="icon-row">
+  <a class="linkedIn-icon" href="https://www.linkedin.com/in/mathtutor-tomquinn" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+  </a>
+
+  <a href="https://www.facebook.com/tom.quinn.1029" target="_blank">
+    <i class="fab fa-facebook facebook-icon"></i>
+  </a>
+</div>
 
    </p>
   
