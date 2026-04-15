@@ -1,11 +1,21 @@
  /* =========================
    GLOBAL STYLES
 ========================= */
+
+header {
+  background: #0f4f4a;
+  background-image: url("images/Mathematics tutor promotion with call-to-action.png");
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  color: #222;
+/*  color: #222; */
+  color: green;
 }
 
 /* Center page content feel */
@@ -19,7 +29,7 @@ section {
   padding: 70px 20px;
 /*  background: #f7f7f7;
   background: red; */
-  background-image: url("images/Mathematics tutor promotion with call-to-action.png");
+  background: #0f4f4a;
 }
 
 .hero h1 {
