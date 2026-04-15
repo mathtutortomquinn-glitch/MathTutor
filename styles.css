@@ -12,9 +12,10 @@
 }
 
 .site-header {
-  background: #0f4f4a;
-  color: white;
-  text-align: center;
+  background-image: url("images/Mathematics tutor promotion with call-to-action.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 20px 10px;
 }
 
