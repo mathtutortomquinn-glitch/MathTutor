@@ -75,6 +75,10 @@ section {
 }
 
 nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
   margin: 10px 0 5px 0;
 }
 
