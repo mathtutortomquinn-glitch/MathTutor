@@ -16,6 +16,7 @@
 
 .site-header {
   background-color: #0f4f4a;
+    color: orange;
   height: 120px; /* reduce this */
 }
 
@@ -32,8 +33,7 @@
 }
 
 .site-header a {
-/* color: #0f4f4a; */
-  color: orange;
+  color: #0f4f4a; 
   margin: 0 10px;
   text-decoration: none;
   font-size: 16px;
