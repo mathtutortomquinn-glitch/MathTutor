@@ -18,7 +18,7 @@
 
 .site-header {
 /*  background-color: #0f4f4a;  */
-  background-color: red;
+  background-color: orange;
     height: auto;   /* important */
 }
 
@@ -29,7 +29,6 @@
  /*  object-fit: cover;    /* keeps it looking like a banner */
   object-fit: contain; 
   display: block;
-
 }
 
 .site-header nav {
