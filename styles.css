@@ -17,8 +17,8 @@
 */
 
 .site-header {
-    background-color: #0f4f4a;   
- /*   background-color:  hsl(174, 68%, 18%) */
+ /*   background-color: #0f4f4a;   */
+   background-color:  hsl(174, 68%, 18%) 
 /****************************************/
 /* 174 = hue (the color → teal/green)
 /* 68% = saturation (how vivid)
@@ -44,9 +44,9 @@
 }
 
 .site-header a {
-  color: #0f4f4a;
+ /*  color: #0f4f4a; */
 /*      background-color:  hsl(174, 68%, 18%)  */ 
-/*   color: white;  */
+  color: white;  
   margin: 0 10px;
   text-decoration: none;
   font-size: 16px;
@@ -98,7 +98,7 @@ nav a {
   margin: 0 12px;
   text-decoration: none;
   font-size: 24px;
-  color: #0f4f4a;
+  color: white;
   font-weight: 500;
 }
 
