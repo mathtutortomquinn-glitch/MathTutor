@@ -36,7 +36,8 @@
 }
 
 .site-header a {
-  color: #0f4f4a; 
+/*   color: #0f4f4a; */
+  color: yellow; 
   margin: 0 10px;
   text-decoration: none;
   font-size: 16px;
@@ -54,7 +55,7 @@ body {
 
 /* Center page content feel */
 section {
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -87,7 +88,7 @@ nav {
 nav a {
   margin: 0 12px;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 124px;
   color: #0f4f4a;
   font-weight: 500;
 }
