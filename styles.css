@@ -15,8 +15,8 @@
 */
 
 .site-header {
+/*  background-color: #0f4f4a;  */
   background-color: #0f4f4a;
-    color: orange;
   height: 120px; /* reduce this */
 }
 
