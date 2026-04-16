@@ -45,7 +45,7 @@
 
 .site-header a {
  /*  color: #0f4f4a; */
-/*      background-color:  hsl(174, 68%, 18%)  */ 
+  background-color:  hsl(174, 68%, 18%)  
   color: white;  
   margin: 0 10px;
   text-decoration: none;
@@ -70,7 +70,8 @@ section {
 
 .hero {
   text-align: center;
-  padding-top: 20px;
+  padding-top: 0px; 
+ /*  padding-top: 20px;  */
 /*  background-image: url("images/Mathematics tutor promotion with call-to-action.png"); */
   background-size: cover;
   background-position: center;
