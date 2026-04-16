@@ -32,10 +32,11 @@
 }
 
 .site-header a {
-  color: #0f4f4a;
+/* color: #0f4f4a; */
+  color: orange;
   margin: 0 10px;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 16px;
   padding-bottom: 0;
 }
 
@@ -138,7 +139,7 @@ footer {
   align-items: center;
   width: 40px;
   height: 40px;
-  color: orange;
+  color: white;
   background: white;
 /*  background: rgba(255, 255, 255, 0.12); */
   border-radius: 8px;
