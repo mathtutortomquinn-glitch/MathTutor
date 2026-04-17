@@ -16,6 +16,16 @@
 }
 */
 
+.notice notice-neutral{
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #b7d6d3;
+    border-radius: 6px;
+    background: #eef8f7;
+    font-size: 16px;
+    color: #0f4f4a;
+}
+
 .site-header {
 /*   background-color: #0f4f4a;  */ 
    background-color: #042314;
