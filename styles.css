@@ -135,9 +135,9 @@ h1, h2, h3 {
    FOOTER CONTAINER
 ========================= */
 footer {
-/* background: #0f4f4ac  matches your green theme */
-  background-color: #0f4f4ac; 
-  color: white;
+/* background: #0f4f4a  matches your green theme */
+  background-color: #0f4f4a; 
+  color:  white;
   text-align: center;
   padding: 25px 15px;
 }
