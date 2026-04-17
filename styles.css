@@ -224,7 +224,8 @@ footer {
   justify-content: center;
   align-items: center;
   gap: 14px;
-  margin-top: 10px;
+  margin-top: 5px;
+   margin-bottom: 5px;
 }
 
 /* Icon base */
@@ -274,7 +275,7 @@ footer p {
 
 .phone-link,
 .email-link {
-  color: #0f4f4a;
+  color: white;
   text-decoration: none;
 }
 
