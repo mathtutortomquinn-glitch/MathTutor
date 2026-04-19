@@ -213,8 +213,12 @@
 
     paypalAmount.value = price;
     itemNameHidden.value = name;
-    displayAmount.value = `$${price}`;
-    payBtn.textContent = `Pay $${price}`;
+    const formattedPrice = Number(price) % 1 === 0 
+    ? `$${Number(price)}`
+    : `$${Number(price).toFixed(2)}`;
+
+    displayAmount.value = formattedPrice;
+    payBtn.textContent = `Pay ${formattedPrice}`;
 
     const successUrl = new URL(PAYMENTS_PAGE);
     successUrl.searchParams.set('paid', 'true');
