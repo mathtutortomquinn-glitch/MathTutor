@@ -209,6 +209,21 @@ h1, h2, h3 {
   box-shadow: 0 0 0 2px rgba(15,79,74,0.2);
 }
 
+
+ .notice notice-neutral {
+   width: 140px;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid #b7d6d3;
+  border-radius: 6px;
+  background: #eef8f7;
+  font-size: 16px;
+  color: #0f4f4a;
+}
+
+
+
 /* =========================
    FOOTER CONTAINER
 ========================= */
